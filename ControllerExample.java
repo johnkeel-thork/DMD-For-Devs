@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class controllerexample extends AppCompatActivity {
+public class ControllerExample extends AppCompatActivity {
 
     //A simple example on how to implement DMD Remote Controller Support
     //Our Remotes always send out a broadcast on key press and key release
