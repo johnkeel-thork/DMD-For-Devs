@@ -11,7 +11,7 @@ public class ControllerExample extends AppCompatActivity {
 
     //A simple example on how to implement DMD Remote Controller Support
     //Our Remotes always send out a broadcast on key press and key release
-    //You should register the broadcast listener on the Resume of your activity and unregister on pause
+    //You should register the broadcast listener on Resume of your activity and unregister on Pause
     //You can further improve the example by adding logic for long press / repeat
 
     @Override
