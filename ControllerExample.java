@@ -47,6 +47,20 @@ public class ControllerExample extends AppCompatActivity {
 
     }
 
+    //Our different Remote Controllers
+    private enum RemoteDeviceModel {Remote1, Remote2, Remote3, SilverFoxB8J, SilverFoxH1, none}
+    private RemoteDeviceModel deviceModel = RemoteDeviceModel.none;
+
+    private void setRemoteModel(String deviceName) {
+        switch (deviceName) {
+            case "DMD-Remote1" -> deviceModel = RemoteDeviceModel.Remote1;
+            case "DMD-Remote2" -> deviceModel = RemoteDeviceModel.Remote2;
+            case "DMD-Remote3" -> deviceModel = RemoteDeviceModel.Remote3;
+            case "SilverFoxB8J" -> deviceModel = RemoteDeviceModel.SilverFoxB8J;
+            case "SilverFoxH1" -> deviceModel = RemoteDeviceModel.SilverFoxH1;
+        }
+    }
+
     private final BroadcastReceiver remoteListener = new BroadcastReceiver() {
 
         @Override
@@ -58,7 +72,19 @@ public class ControllerExample extends AppCompatActivity {
                 //When the key is pressed
                 if (intent.hasExtra("key_press")){
 
+                    //The Keycode
                     int keyCode = intent.getIntExtra("key_press",0);
+
+                    //Detect the device name (in case you want different actions according to device model)
+                    if (intent.hasExtra("deviceName")){
+                        
+                        String device = intent.getStringExtra("deviceName");
+                        
+                        if (device != null && !device.isEmpty()){
+                            setRemoteModel(device);
+                        }
+                        
+                    }
 
                     switch (keyCode){
 
